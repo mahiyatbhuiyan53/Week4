@@ -1,0 +1,49 @@
+import random
+
+print("==================================================")
+print("Welcome to the Cyber-RPS Arena")
+print("==================================================")
+
+#1. Store our choices in a list
+choices= ["ROCK", "PAPER", "SCISSORS"]
+
+#Track scores across rounds
+playerScore=0
+computerScore=0
+
+active=True
+while True:
+    print(f"\n SCOREBOARD | Player: {playerScore} | Bot: {computerScore}")
+    
+    #Get user input and clean it 
+    playerChoice=input("Choose ROCK, PAPER, or SCISSORS (or type EXIT to quit: ").strip().upper()
+    
+    if playerChoice=="EXIT":
+        print("\n Leaving the arena. Thanks for playing!")
+        active=False
+        continue
+    
+    #2.Validate input using our choices list
+    if playerChoice not in choices:
+        print("Invalid Entry! Please choose Rock, Paper, or Scissors.")
+        continue
+    
+    #3.Let the computer choose a random item from our list
+    computerChoice=random.choice(choices)
+    print(f"Bot chose: {computerChoice}")
+    
+    #4. Process ame logic using conditionals
+    if playerChoice==computerChoice:
+        print("IT'S A TIE!")
+    elif (playerChoice=="ROCK" and computerChoice=="SCISSORS") or \
+    (playerChoice=="PAPER" and computerChoice == "ROCK") or \
+    (playerChoice=="SCISSORS" and computerChoice == "PAPER"):
+        print("YOU WIN THIS ROUND!")
+        playerScore=playerScore+1 
+    else:
+        print("BOT WINS THIS ROUND!")
+        computerScore=computerScore+1 
+
+print("==================================================")
+print(f"Final Score -> You: {playerScore} | Bot: {computerScore}")
+print("==================================================")

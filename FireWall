@@ -1,0 +1,44 @@
+print("==================================================")
+print("FIREWALL MODULE INITIALIZED: GUARD ACTIVE")
+print("==================================================")
+
+#1.Initialize the security metrics
+firewallHealth=100
+breachesBlocked=0
+
+#2.Main Security Loop
+while firewallHealth>0:
+    print(f"\n Firewall Integrity:{firewallHealth}% | breachesBlocked: {breachesBlocked}")
+    packet=input("Enter incoming packet code (or type EXIT): ").strip()
+    
+    #Check for manual emergency shutdown
+    if packet.upper()=="EXIT":
+        print("\n Emergency override activated. Shutting down systems...")
+        break
+    
+    #3. Deep Packet Scan (Tracking threat signatures)
+    threats=0 
+    
+    for letter in packet:
+        if letter=="!" or letter =="$" or letter == "#":
+            threats=threats+1
+    
+    #4. Damage Assessment Matrix
+    if threats == 0:
+        print("SCAN COMPLETE: Clean packet. Threat neutralized!")
+        breachesBlocked=breachesBlocked+1 
+    else:
+        damage=threats*20 
+        firewallHealth=firewallHealth-damage
+        print(f"ALERT: {threats} threat signatures detected!")
+        print(f"Firewall dropped by {damage} points.")
+        
+#5.Final Core Report
+print("\n==================================================")
+if firewallHealth<=0:
+    print("CORE SYSTEM BREACHED: THE HACKERS GOT IN.")
+else:
+    print("TERMINAL SECURED BY OPERATOR")
+
+print(f"Final Score: You blocked {breachesBlocked} malicious waves.")
+print("==================================================")
